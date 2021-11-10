@@ -21,9 +21,12 @@ app.set("view engine", "hbs");
 const Parser = require("rss-parser");
 const parser = new Parser();
 
+// Virgool Username
+const username = "virgool";
+
 app.get("/", async (req, res) => {
-  let feed = await parser.parseURL("https://virgool.io/feed/@virgool");
-  var feedItems = [];
+  let feed = await parser.parseURL(`https://virgool.io/feed/@${username}`);
+  let feedItems = [];
 
   feed.items.forEach((item) => {
     feedItems.push({
