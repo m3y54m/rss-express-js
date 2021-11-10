@@ -26,18 +26,28 @@ const username = "virgool";
 
 app.get("/", async (req, res) => {
   let feed = await parser.parseURL(`https://virgool.io/feed/@${username}`);
+
+  let feedInfo = {
+    url: feed.feedUrl,
+    title: feed.title,
+  };
+
   let feedItems = [];
 
   feed.items.forEach((item) => {
     feedItems.push({
       title: item.title,
       link: item.link,
+      summary: item.summary,
+      author: item.author,
+      date: item.pubDate,
     });
   });
 
   // The template for index page is in "views/index.hbs"
   res.render("index", {
     feedItems: feedItems,
+    feedInfo: feedInfo,
   });
 });
 
