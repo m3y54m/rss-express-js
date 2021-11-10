@@ -7,7 +7,7 @@ Install the following NodeJS packages:
 ```console
 yarn add rss-parser
 yarn add express
-yarn add pug
+yarn add express-handlebars
 ```
 
 ## Run
@@ -20,4 +20,5 @@ node app.js
 
 - [rss-parser](https://www.npmjs.com/package/rss-parser)
 - [Using template engines with Express](https://expressjs.com/en/guide/using-template-engines.html)
-- [Pug - Iteration](https://pugjs.org/language/iteration.html)
+- [Express.js view engine for handlebars.js](https://github.com/express-handlebars/express-handlebars)
+- [Handlebars Built-in Helpers](https://handlebarsjs.com/guide/builtin-helpers.html#each)

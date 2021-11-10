@@ -2,16 +2,25 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 5000;
-// Pug template engine for displaying variables in a HTML page
-const pug = require("pug");
-// Set "Pug" as a template engine for Express
-app.set("view engine", "pug");
+
+// Handlebars template engine for displaying variables in a HTML page
+const exphbs = require("express-handlebars");
+
+// Configure "Handlebars" as a template engine for Express
+app.engine(
+  "handlebars",
+  exphbs({
+    layoutsDir: __dirname + "/views",
+    defaultLayout: "index",
+  })
+);
+app.set("view engine", "handlebars");
+
 // RSS Parser
 const Parser = require("rss-parser");
 const parser = new Parser();
 
 app.get("/", async (req, res) => {
-
   let feed = await parser.parseURL("https://virgool.io/feed/@virgool");
   var feedItems = [];
 
