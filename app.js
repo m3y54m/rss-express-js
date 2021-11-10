@@ -8,13 +8,14 @@ const exphbs = require("express-handlebars");
 
 // Configure "Handlebars" as a template engine for Express
 app.engine(
-  "handlebars",
+  "hbs",
   exphbs({
     layoutsDir: __dirname + "/views",
     defaultLayout: "index",
+    extname: "hbs",
   })
 );
-app.set("view engine", "handlebars");
+app.set("view engine", "hbs");
 
 // RSS Parser
 const Parser = require("rss-parser");
@@ -31,7 +32,7 @@ app.get("/", async (req, res) => {
     });
   });
 
-  // The template for index page is in "views/index.pug"
+  // The template for index page is in "views/index.hbs"
   res.render("index", {
     feedItems: feedItems,
   });
